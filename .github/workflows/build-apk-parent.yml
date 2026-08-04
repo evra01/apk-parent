@@ -41,7 +41,7 @@ jobs:
         working-directory: android-twa
         run: |
           if [ ! -d "app" ]; then
-            bubblewrap init --manifest twa-manifest.json --skipPwaValidation
+            printf 'n\nn\n' | bubblewrap init --manifest twa-manifest.json --skipPwaValidation
           fi
 
       - name: Construire l'APK
