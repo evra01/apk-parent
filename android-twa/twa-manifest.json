@@ -1,0 +1,29 @@
+{
+  "packageId": "ci.maitredemaison.parent",
+  "host": "maitre-de-maison-1.onrender.com",
+  "name": "Maître de Maison — Espace Parent",
+  "launcherName": "MDM Parent",
+  "display": "standalone",
+  "orientation": "portrait",
+  "themeColor": "#2952CC",
+  "navigationColor": "#2952CC",
+  "navigationColorDark": "#2952CC",
+  "navigationDividerColor": "#2952CC",
+  "backgroundColor": "#FBFBFD",
+  "enableNotifications": true,
+  "startUrl": "/espace-parent-connexion.html",
+  "iconUrl": "https://maitre-de-maison-1.onrender.com/icons/icon-parent-512.png",
+  "maskableIconUrl": "https://maitre-de-maison-1.onrender.com/icons/icon-parent-512-maskable.png",
+  "webManifestUrl": "https://maitre-de-maison-1.onrender.com/manifest-parent.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": { "enabled": false },
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "mdm-parent"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli"
+}
