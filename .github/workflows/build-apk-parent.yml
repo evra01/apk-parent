@@ -39,18 +39,14 @@ jobs:
             "androidSdkPath": "${ANDROID_HOME}"
           }
           EOF
-          cat ~/.bubblewrap/config.json
 
       - name: Restaurer la clé de signature
         working-directory: android-twa
         run: echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > android.keystore
 
-      - name: Initialiser le projet Android (première exécution seulement)
+      - name: Générer le projet Android depuis twa-manifest.json
         working-directory: android-twa
-        run: |
-          if [ ! -d "app" ]; then
-            bubblewrap init --manifest twa-manifest.json --skipPwaValidation
-          fi
+        run: bubblewrap update --skipVersionUpgrade
 
       - name: Construire l'APK
         working-directory: android-twa
