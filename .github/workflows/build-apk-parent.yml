@@ -51,13 +51,9 @@ jobs:
       - name: Construire l'APK
         working-directory: android-twa
         env:
-          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-        run: |
-          bubblewrap build \
-            --skipPwaValidation \
-            --signingKeyPassword="$ANDROID_KEYSTORE_PASSWORD" \
-            --signingKeyAliasPassword="$ANDROID_KEY_PASSWORD"
+          BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          BUBBLEWRAP_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: bubblewrap build --skipPwaValidation
 
       - name: Publier l'APK généré
         uses: actions/upload-artifact@v4
