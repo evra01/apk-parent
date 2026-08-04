@@ -1,8 +1,5 @@
 name: Build APK — Espace Parent
 
-# Se déclenche à la demande depuis l'onglet "Actions" de GitHub (bouton
-# "Run workflow"). Peut aussi se déclencher automatiquement sur un tag
-# (ex. v1.0.1) si tu préfères — décommente la section "push" ci-dessous.
 on:
   workflow_dispatch: {}
   # push:
@@ -33,6 +30,17 @@ jobs:
       - name: Installer Bubblewrap
         run: npm install -g @bubblewrap/cli
 
+      - name: Pré-configurer Bubblewrap (évite les questions interactives)
+        run: |
+          mkdir -p ~/.bubblewrap
+          cat > ~/.bubblewrap/config.json <<EOF
+          {
+            "jdkPath": "${JAVA_HOME}",
+            "androidSdkPath": "${ANDROID_HOME}"
+          }
+          EOF
+          cat ~/.bubblewrap/config.json
+
       - name: Restaurer la clé de signature
         working-directory: android-twa
         run: echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > android.keystore
@@ -41,7 +49,7 @@ jobs:
         working-directory: android-twa
         run: |
           if [ ! -d "app" ]; then
-            printf 'n\nn\n' | bubblewrap init --manifest twa-manifest.json --skipPwaValidation
+            bubblewrap init --manifest twa-manifest.json --skipPwaValidation
           fi
 
       - name: Construire l'APK
