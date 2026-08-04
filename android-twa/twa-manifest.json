@@ -11,6 +11,7 @@
   "navigationDividerColor": "#2952CC",
   "backgroundColor": "#FBFBFD",
   "enableNotifications": true,
+  "splashScreenFadeOutDuration": 300,
   "startUrl": "/espace-parent-connexion.html",
   "iconUrl": "https://maitre-de-maison-1.onrender.com/icons/icon-parent-512.png",
   "maskableIconUrl": "https://maitre-de-maison-1.onrender.com/icons/icon-parent-512-maskable.png",
